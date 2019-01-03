@@ -9,7 +9,7 @@ defmodule LoadTest do
   @interval_size 100_000
 
   def run do
-    {:ok, cache} = Todo.Cache.start()
+    {:ok, cache} = Todo.Cache.start_link(nil)
 
     interval_count = round(@total_processes / @interval_size)
     Enum.each(0..(interval_count - 1), &run_interval(cache, make_interval(&1)))
@@ -24,7 +24,7 @@ defmodule LoadTest do
     {time, _} =
       :timer.tc(fn ->
         interval
-        |> Enum.each(&Todo.Cache.server_process(cache, "cache_#{&1}"))
+        |> Enum.each(&Todo.Cache.server_process("cache_#{&1}"))
       end)
 
     IO.puts("#{inspect(interval)}: average put #{time / @interval_size} μs")
@@ -32,7 +32,7 @@ defmodule LoadTest do
     {time, _} =
       :timer.tc(fn ->
         interval
-        |> Enum.each(&Todo.Cache.server_process(cache, "cache_#{&1}"))
+        |> Enum.each(&Todo.Cache.server_process("cache_#{&1}"))
       end)
 
     IO.puts("#{inspect(interval)}: average get #{time / @interval_size} μs\n")
