@@ -51,6 +51,7 @@ defmodule Todo.Server do
     {:stop, :normal, {name, todo_list}}
   end
 
+  @impl GenServer
   def handle_info(unknown_message, state) do
     super(unknown_message, state)
     {:noreply, state, @expiry_idle_timeout}
