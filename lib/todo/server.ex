@@ -22,10 +22,10 @@ defmodule Todo.Server do
   @impl GenServer
   def init(todo_list_name) do
     IO.puts("Starting to-do server for #{todo_list_name}.")
+
     {
       :ok,
-      {todo_list_name, Todo.Database.get(todo_list_name) || Todo.List.new()},
-      @expiry_idle_timeout
+      {todo_list_name, Todo.Database.get(todo_list_name) || Todo.List.new()}
     }
   end
 
@@ -41,8 +41,7 @@ defmodule Todo.Server do
     {
       :reply,
       Todo.List.entries(todo_list, date),
-      {todo_list_name, todo_list},
-      @expiry_idle_timeout
+      {todo_list_name, todo_list}
     }
   end
 

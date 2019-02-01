@@ -5,4 +5,3 @@ defmodule Todo.Application do
     Todo.System.start_link()
   end
 end
-
