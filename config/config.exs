@@ -10,7 +10,7 @@ use Mix.Config
 
 # You can configure your application as:
 #
-#     config :todo, key: :value
+config :todo, http_port: 5454
 #
 # and access this configuration in your application as:
 #
@@ -27,4 +27,5 @@ use Mix.Config
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
 #
-#     import_config "#{Mix.env()}.exs"
+import_config "#{Mix.env()}.exs"
+
