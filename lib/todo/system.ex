@@ -3,7 +3,7 @@ defmodule Todo.System do
     Supervisor.start_link(
       [
         # Todo.Metrics,
-        Todo.ProcessRegistry,
+        # Todo.ProcessRegistry,
         Todo.Database,
         Todo.Cache,
         Todo.Web

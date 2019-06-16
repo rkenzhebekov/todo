@@ -1,8 +1,8 @@
 defmodule Todo.Web do
   use Plug.Router
 
-  plug :match
-  plug :dispatch
+  plug(:match)
+  plug(:dispatch)
 
   def child_spec(_arg) do
     Plug.Adapters.Cowboy.child_spec(
@@ -47,4 +47,3 @@ defmodule Todo.Web do
     |> Plug.Conn.send_resp(200, "OK")
   end
 end
-
