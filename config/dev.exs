@@ -1,3 +1,4 @@
 use Mix.Config
 
-config :todo, http_port: 5454
+config :todo, todo_item_expiry: :timer.seconds(10)
+

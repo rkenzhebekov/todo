@@ -24,3 +24,4 @@ todo-*.tar
 
 .idea/
 persist/
+test_persist/
